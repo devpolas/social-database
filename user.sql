@@ -1,0 +1,19 @@
+-- Active: 1758303409986@@127.0.0.1@5432@socialdatabase
+-- CREATE TABLE
+--   users (
+--     id SERIAL PRIMARY KEY,
+--     created_at TIMESTAMP
+--     WITH
+--       TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--       updated_at TIMESTAMP
+--     WITH
+--       TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--       username VARCHAR(50) NOT NULL UNIQUE,
+--       bio VARCHAR(400),
+--       avatar VARCHAR(200),
+--       phone VARCHAR(25),
+--       email VARCHAR(40),
+--       password VARCHAR(50),
+--       status VARCHAR(15),
+--       CHECK (COALESCE(phone, email) IS NOT NULL)
+--   );
