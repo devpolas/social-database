@@ -1,3 +1,4 @@
+
 import random
 from faker import Faker
 import psycopg2
@@ -31,7 +32,7 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
-# Clear old data (optional)
+# Clear old data (optional, keeps IDs consistent)
 cur.execute("TRUNCATE likes, comments, photo_tags, caption_tags, hashtags_posts, hashtags, posts, followers, users RESTART IDENTITY CASCADE;")
 
 # USERS
@@ -47,7 +48,7 @@ for _ in range(N_USERS):
         fake.text(max_nb_chars=150),
         fake.image_url(),
         None if random.random() < 0.5 else fake.phone_number(),
-        fake.email(),
+        fake.unique.email(),
         fake.password(),
         random.choice(["active", "inactive"])
     ))
@@ -107,14 +108,18 @@ for _ in range(N_LIKES):
             random.choice(comment_ids)
         ))
 
-# HASHTAGS
+# HASHTAGS (guaranteed unique)
 print("Inserting hashtags...")
+unique_tags = set()
+while len(unique_tags) < N_HASHTAGS:
+    unique_tags.add(fake.word())
+
 hashtag_ids = []
-for _ in range(N_HASHTAGS):
+for tag in unique_tags:
     cur.execute("""
         INSERT INTO hashtags (title) VALUES (%s)
         RETURNING id
-    """, (fake.word(),))
+    """, (tag,))
     hashtag_ids.append(cur.fetchone()[0])
 
 # HASHTAGS_POSTS
