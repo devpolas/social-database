@@ -10,4 +10,4 @@ CREATE TABLE
       contents VARCHAR(240) NOT NULL,
       user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
       post_id INTEGER NOT NULL REFERENCES posts (id) ON DELETE CASCADE
-  )
+  );

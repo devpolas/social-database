@@ -1,7 +1,7 @@
 CREATE TABLE
   posts (
     id SERIAL PRIMARY KEY,
-    crated_at TIMESTAMP
+    created_at TIMESTAMP
     WITH
       TIME ZONE DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP
@@ -24,4 +24,4 @@ CREATE TABLE
         )
       ),
       user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE
-  )
+  );

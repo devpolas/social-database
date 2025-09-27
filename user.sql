@@ -7,7 +7,7 @@ CREATE TABLE
       updated_at TIMESTAMP
     WITH
       TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-      username VARCHAR(50) NOT NULL UNIQUE,
+      username VARCHAR(30) NOT NULL,
       bio VARCHAR(400),
       avatar VARCHAR(200),
       phone VARCHAR(25),
