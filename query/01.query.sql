@@ -1,5 +1,5 @@
 SELECT
-  COUNT(*)
+  username
 FROM
   users;
 
