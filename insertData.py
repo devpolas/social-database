@@ -12,15 +12,15 @@ DB_PASS = "PAI9xPPCB"
 DB_HOST = "localhost"
 DB_PORT = "5432"
 
-N_USERS = 500
-N_POSTS = 2000
-N_COMMENTS = 5000
-N_LIKES = 8000
+N_USERS = 5000
+N_POSTS = 20000
+N_COMMENTS = 50000
+N_LIKES = 80000
 N_HASHTAGS = 200
-N_HASHTAGS_POSTS = 1000
-N_FOLLOWERS = 1500
-N_PHOTO_TAGS = 500
-N_CAPTION_TAGS = 500
+N_HASHTAGS_POSTS = 4000
+N_FOLLOWERS = 15000
+N_PHOTO_TAGS = 3000
+N_CAPTION_TAGS = 5000
 # ----------------------------
 
 conn = psycopg2.connect(
@@ -156,8 +156,8 @@ for _ in range(N_PHOTO_TAGS):
     """, (
         random.choice(user_ids),
         random.choice(post_ids),
-        random.randint(0, 1000),
-        random.randint(0, 1000)
+        random.randint(0, 500000),
+        random.randint(0, 20000000)
     ))
 
 # CAPTION_TAGS
